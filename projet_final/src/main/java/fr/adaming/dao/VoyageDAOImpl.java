@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fr.adaming.model.DateDepart;
 import fr.adaming.model.Voyage;
 
 @Repository
@@ -41,11 +42,19 @@ public class VoyageDAOImpl implements IVoyageDAO {
 	}
 
 	@Override
-	public Voyage creer(Voyage t) {
+	public Voyage creer(Voyage v) {
 		// ouvrir une session (bus de données -> bdd)
 		Session s = sf.getCurrentSession();
 		// ajouter l'employé dans le context Hibernate
-		s.save(t);
+		s.save(v);
+		for (DateDepart date : v.getDatesDepart()){
+			date.setVoyage(v);
+			s.save(date);
+		}
+		
+		
+		
+		//t.getId_v();
 		return null;
 	}
 

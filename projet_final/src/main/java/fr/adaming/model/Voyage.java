@@ -13,9 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name="voyages")
+@JsonIgnoreProperties("commande")
 public class Voyage implements Serializable{
 
 	/**
@@ -33,7 +36,7 @@ public class Voyage implements Serializable{
 	private String destination;
 	private String description;
 
-	@OneToMany(mappedBy = "voyage", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "voyage", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<DateDepart> datesDepart;
 	private int duree;
 	private String urlPhoto;
