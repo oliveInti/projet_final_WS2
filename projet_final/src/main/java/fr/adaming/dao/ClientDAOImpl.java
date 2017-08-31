@@ -48,9 +48,9 @@ public class ClientDAOImpl implements IClientDAO {
 
 	@Override
 	public void supprimer(int id) {
-		Session s = sf.getCurrentSession();
-		Client client = (Client) s.get(Client.class, id);
-		s.delete(client);
+//		Session s = sf.getCurrentSession();
+//		Client client = (Client) s.get(Client.class, id);
+		//s.delete(client);
 	}
 
 	@Override
