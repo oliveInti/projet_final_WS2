@@ -61,8 +61,16 @@ public class ClientDAOImpl implements IClientDAO {
 
 	@Override
 	public boolean isAdmin(Client client) {
-		// TODO Auto-generated method stub
-		return false;
+		Session s = sf.getCurrentSession();
+		String req = "FROM Client as c WHERE mail=? AND admin='true'";
+		Query query = s.createQuery(req);
+		query.setParameter(1, client.getMail());
+		
+		@SuppressWarnings("unchecked")
+		List<Client> clients = query.list();
+		
+		int verif = clients.size();
+		return (verif==1);
 	}
 
 }

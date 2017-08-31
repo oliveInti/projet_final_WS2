@@ -44,4 +44,10 @@ public class ClientServiceImpl implements IClientService {
 		return null;
 	}
 
+	@Override
+	public boolean isAdmin(Client client) {
+		return clientDAO.isAdmin(client);
+		 
+	}
+
 }

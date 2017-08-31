@@ -15,4 +15,6 @@ public interface IClientService {
 	public void supprimer(int id);
 
 	public Client modifier(Client c);
+	
+	public boolean isAdmin(Client client);
 }
