@@ -43,4 +43,10 @@ public class VoyageServiceImpl implements IVoyageService {
 		return null;
 	}
 
+	@Override
+	public List<Voyage> recupererParNom(String nom) {
+
+		return voyageDAO.recupererParNom(nom);
+	}
+
 }

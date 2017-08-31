@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import fr.adaming.model.Client;
 import fr.adaming.model.DateDepart;
 import fr.adaming.model.Voyage;
 
@@ -47,14 +48,12 @@ public class VoyageDAOImpl implements IVoyageDAO {
 		Session s = sf.getCurrentSession();
 		// ajouter l'employé dans le context Hibernate
 		s.save(v);
-		for (DateDepart date : v.getDatesDepart()){
+		for (DateDepart date : v.getDatesDepart()) {
 			date.setVoyage(v);
 			s.save(date);
 		}
-		
-		
-		
-		//t.getId_v();
+
+		// t.getId_v();
 		return null;
 	}
 
@@ -69,6 +68,16 @@ public class VoyageDAOImpl implements IVoyageDAO {
 	public Voyage modifier(Voyage t) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Voyage> recupererParNom(String nom) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Voyage as v WHERE v.destination like :name";
+		Query query = s.createQuery(req);
+		query.setParameter("name", nom);
+		List<Voyage> listeVoyages = query.list();
+		return listeVoyages;
 	}
 
 }

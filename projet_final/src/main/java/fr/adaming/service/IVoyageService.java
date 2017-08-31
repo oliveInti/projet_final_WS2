@@ -15,4 +15,6 @@ public interface IVoyageService {
 	public void supprimer(int id);
 
 	public Voyage modifier(Voyage v);
+
+	public List<Voyage> recupererParNom(String nom);
 }

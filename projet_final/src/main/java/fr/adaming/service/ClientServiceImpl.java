@@ -50,4 +50,11 @@ public class ClientServiceImpl implements IClientService {
 		 
 	}
 
+	@Override
+	public List<Client> recupererParNom(String nom) {
+		return clientDAO.recupererParNom(nom);
+	}
+
+
+
 }

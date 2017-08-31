@@ -38,7 +38,6 @@ public class ClientDAOImpl implements IClientDAO {
 		return varClient;
 	}
 
-
 	@Override
 	public Client creer(Client t) {
 		Session s = sf.getCurrentSession();
@@ -48,9 +47,9 @@ public class ClientDAOImpl implements IClientDAO {
 
 	@Override
 	public void supprimer(int id) {
-//		Session s = sf.getCurrentSession();
-//		Client client = (Client) s.get(Client.class, id);
-		//s.delete(client);
+		// Session s = sf.getCurrentSession();
+		// Client client = (Client) s.get(Client.class, id);
+		// s.delete(client);
 	}
 
 	@Override
@@ -65,12 +64,22 @@ public class ClientDAOImpl implements IClientDAO {
 		String req = "FROM Client as c WHERE mail=? AND admin='true'";
 		Query query = s.createQuery(req);
 		query.setParameter(1, client.getMail());
-		
+
 		@SuppressWarnings("unchecked")
 		List<Client> clients = query.list();
-		
+
 		int verif = clients.size();
-		return (verif==1);
+		return (verif == 1);
+	}
+
+	@Override
+	public List<Client> recupererParNom(String nom) {
+		Session s = sf.getCurrentSession();
+		String req = "FROM Client as c WHERE c.nom like :name";
+		Query query = s.createQuery(req);
+		query.setParameter("name", nom);
+		List<Client> listeClients = query.list();
+		return listeClients;
 	}
 
 }

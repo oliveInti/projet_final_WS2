@@ -93,4 +93,12 @@ public class CommandeDAOImpl implements ICommandeDAO {
 		return (int)prixTotal;
 	}
 
+	@Override
+	public List<Commande> recupererParNom(String nom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }

@@ -53,4 +53,9 @@ public class ClientRestController {
 	public void supprimerClient(@PathVariable("pId") int id) {
 		clientService.supprimer(id);
 	}
+
+	@RequestMapping(value = "/nomClient/{pNom}", method = RequestMethod.GET, produces = "application/json")
+	public List<Client> recupererParNom(@PathVariable("pNom") String nom) {
+		return clientService.recupererParNom(nom);
+	}
 }

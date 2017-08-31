@@ -46,4 +46,12 @@ public class DateDepartDaoImpl implements IDateDepartDao {
 		return null;
 	}
 
+	@Override
+	public List<DateDepart> recupererParNom(String nom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }

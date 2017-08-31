@@ -17,4 +17,6 @@ public interface IClientService {
 	public Client modifier(Client c);
 	
 	public boolean isAdmin(Client client);
+	
+	public List<Client> recupererParNom(String nom);
 }

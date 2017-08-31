@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.adaming.model.Client;
 import fr.adaming.model.Voyage;
 import fr.adaming.service.IVoyageService;
 
@@ -24,7 +25,7 @@ public class VoyageRestController {
 
 	@Autowired
 	private IVoyageService voyageService;
-	
+
 	public void setVoyageService(IVoyageService voyageService) {
 		this.voyageService = voyageService;
 	}
@@ -38,19 +39,24 @@ public class VoyageRestController {
 	public Voyage recupererParId(@PathVariable("pId") int id) {
 		return voyageService.recupererParId(id);
 	}
-	
-	@RequestMapping(value="/ajout", method=RequestMethod.POST, consumes="application/json", produces = "application/json")
+
+	@RequestMapping(value = "/ajout", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	public Voyage ajouterVoyage(@RequestBody Voyage v) {
 		return voyageService.creer(v);
 	}
-	
-	@RequestMapping(value="/modif", method=RequestMethod.PUT, consumes="application/json")
-	public void modifierVoyage(@RequestBody Voyage v){
+
+	@RequestMapping(value = "/modif", method = RequestMethod.PUT, consumes = "application/json")
+	public void modifierVoyage(@RequestBody Voyage v) {
 		voyageService.modifier(v);
 	}
 
-	@RequestMapping(value="/supp/{pId}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/supp/{pId}", method = RequestMethod.DELETE)
 	public void supprimerVoyage(@PathVariable("pId") int id) {
 		voyageService.supprimer(id);
+	}
+
+	@RequestMapping(value = "/destination/{pNom}", method = RequestMethod.GET, produces = "application/json")
+	public List<Voyage> recupererParNom(@PathVariable("pNom") String nom) {
+		return voyageService.recupererParNom(nom);
 	}
 }
