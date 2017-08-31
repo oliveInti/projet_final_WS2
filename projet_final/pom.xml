@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<spring.version>4.1.9.RELEASE</spring.version>
+		<spring.version>4.2.0.RELEASE</spring.version>
 		<hibernate.version>4.2.21.Final</hibernate.version> <!-- La seule version de jersey compatible avec cette version de Hibernate 
 			est la version 1.8 -->
 	</properties>
