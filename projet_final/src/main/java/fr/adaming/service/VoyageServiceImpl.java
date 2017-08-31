@@ -33,7 +33,7 @@ public class VoyageServiceImpl implements IVoyageService {
 
 	@Override
 	public void supprimer(int id) {
-		// TODO Auto-generated method stub
+		voyageDAO.supprimer(id);
 
 	}
 

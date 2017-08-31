@@ -60,8 +60,9 @@ public class VoyageDAOImpl implements IVoyageDAO {
 
 	@Override
 	public void supprimer(int id) {
-		// TODO Auto-generated method stub
-
+		Session s = sf.getCurrentSession();
+		Voyage voyage = (Voyage) s.get(Voyage.class, id);
+		s.delete(voyage);
 	}
 
 	@Override

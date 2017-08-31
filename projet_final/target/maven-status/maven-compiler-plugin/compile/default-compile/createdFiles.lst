@@ -5,11 +5,13 @@ fr\adaming\model\Commande.class
 fr\adaming\dao\CommandeDAOImpl.class
 fr\adaming\dao\IGeneriqueDAO.class
 fr\adaming\dao\VoyageDAOImpl.class
+fr\adaming\dao\IDateDepartDao.class
 fr\adaming\model\Client.class
 fr\adaming\dao\ClientDAOImpl.class
 fr\adaming\service\ICommandeService.class
 fr\adaming\service\IClientService.class
 fr\adaming\restControllers\VoyageRestController.class
+fr\adaming\dao\DateDepartDaoImpl.class
 fr\adaming\service\CommandeServiceImpl.class
 fr\adaming\model\DateDepart.class
 fr\adaming\dao\IVoyageDAO.class
