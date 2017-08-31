@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.DateDepart;
 
-@Repository
+//Classe implémentant les méthodes DAO de DateDepart
+@Repository // permet d'identifier un bean de type DAO
 public class DateDepartDaoImpl implements IDateDepartDao {
-	
-	@Autowired
+
+	@Autowired // injection de dépendance, permet de spécifier une variable
+	// d'instance à renseigner par Spring
 	private SessionFactory sf;
 
 	@Override
@@ -51,7 +53,5 @@ public class DateDepartDaoImpl implements IDateDepartDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 }

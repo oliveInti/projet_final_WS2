@@ -15,40 +15,42 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-@Entity
-@Table(name="voyages")
-@JsonIgnoreProperties("commande")
-public class Voyage implements Serializable{
+// Classe voyage, décrit les différents voyages proposés sur notre appli
+@Entity // pour faire persister la classe
+@Table(name = "voyages")
+@JsonIgnoreProperties("commande") // permet d'éviter les conflits entre commande
+									// et voyage
+public class Voyage implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 
+	// Attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_v;
 
-	// benoit : libelle du voyage
 	private String libelle;
 	private String destination;
 	private String description;
 
-	@OneToMany(mappedBy = "voyage", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "voyage", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<DateDepart> datesDepart;
 	private int duree;
 	private String urlPhoto;
 	private int prix;
 	private int categorie;
-	@OneToOne(mappedBy="voyage")
+	@OneToOne(mappedBy = "voyage")
 	private Commande commande;
-	
+
+	// Constructeurs : un vide puis complet, sans id et sans id sans classes
 	public Voyage() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
+
 	public Voyage(int id_v, String libelle, String destination, String description, List<DateDepart> datesDepart,
 			int duree, String urlPhoto, int prix, int categorie) {
 		super();
@@ -62,6 +64,7 @@ public class Voyage implements Serializable{
 		this.prix = prix;
 		this.categorie = categorie;
 	}
+
 	public Voyage(String libelle, String destination, String description, List<DateDepart> datesDepart, int duree,
 			String urlPhoto, int prix, int categorie) {
 		super();
@@ -73,9 +76,10 @@ public class Voyage implements Serializable{
 		this.urlPhoto = urlPhoto;
 		this.prix = prix;
 		this.categorie = categorie;
-		
+
 	}
-	
+
+	// méthode toString() pour l'affichage
 	@Override
 	public String toString() {
 		return "Voyage [id_v=" + id_v + ", " + (libelle != null ? "libelle=" + libelle + ", " : "")
@@ -85,65 +89,86 @@ public class Voyage implements Serializable{
 				+ (urlPhoto != null ? "urlPhoto=" + urlPhoto + ", " : "") + "prix=" + prix + ", categorie=" + categorie
 				+ "]";
 	}
+
+	// getters setters des attributs
 	public int getId_v() {
 		return id_v;
 	}
+
 	public void setId_v(int id_v) {
 		this.id_v = id_v;
 	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
 	public String getDestination() {
 		return destination;
 	}
+
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public List<DateDepart> getDatesDepart() {
 		return datesDepart;
 	}
+
 	public void setDatesDepart(List<DateDepart> datesDepart) {
 		this.datesDepart = datesDepart;
 	}
+
 	public int getDuree() {
 		return duree;
 	}
+
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
+
 	public String getUrlPhoto() {
 		return urlPhoto;
 	}
+
 	public void setUrlPhoto(String urlPhoto) {
 		this.urlPhoto = urlPhoto;
 	}
+
 	public int getPrix() {
 		return prix;
 	}
+
 	public void setPrix(int prix) {
 		this.prix = prix;
 	}
+
 	public int getCategorie() {
 		return categorie;
 	}
+
 	public void setCategorie(int categorie) {
 		this.categorie = categorie;
 	}
+
 	public Commande getCommande() {
 		return commande;
 	}
+
 	public void setCommande(Commande commande) {
 		this.commande = commande;
 	}
-	
+
 }

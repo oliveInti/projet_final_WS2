@@ -10,13 +10,15 @@ import fr.adaming.dao.ICommandeDAO;
 import fr.adaming.dao.IVoyageDAO;
 import fr.adaming.model.Commande;
 
-@Service
-@Transactional
+//Classe implémentant les méthodes Service de Commande
+@Service // permet d'identifier le bean comme un service
+@Transactional // sert à préciser à Spring quelles méthodes doivent s’exécuter
+// dans une transaction
 public class CommandeServiceImpl implements ICommandeService {
 
 	@Autowired
 	private ICommandeDAO commandeDAO;
-	
+
 	@Autowired
 	private IVoyageDAO voyageDAO;
 
@@ -33,9 +35,9 @@ public class CommandeServiceImpl implements ICommandeService {
 
 	@Override
 	public Commande creer(Commande c) {
-		
+
 		c.setVoyage(voyageDAO.recupererParId(c.getVoyage().getId_v()));
-		
+
 		return commandeDAO.creer(c);
 
 	}

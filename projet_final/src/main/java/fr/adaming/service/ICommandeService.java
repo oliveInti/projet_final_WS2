@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.adaming.model.Commande;
 
+//interface CommandeService, décrivant les méthodes qui seront implémentées dans les classes Service
 public interface ICommandeService {
 
 	public List<Commande> recupererTout();

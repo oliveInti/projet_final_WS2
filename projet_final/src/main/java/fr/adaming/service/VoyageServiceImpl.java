@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.adaming.dao.IVoyageDAO;
 import fr.adaming.model.Voyage;
 
-@Service
-@Transactional
+//Classe implémentant les méthodes Service de Voyage
+@Service// permet d'identifier le bean comme un service
+@Transactional// sert à préciser à Spring quelles méthodes doivent s’exécuter
+// dans une transaction
 public class VoyageServiceImpl implements IVoyageService {
 
 	@Autowired

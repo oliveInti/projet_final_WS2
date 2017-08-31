@@ -12,30 +12,33 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table(name="datesDepart")
-@JsonIgnoreProperties("voyage")
+//Classe dates de départ, décrit les différentes dates départ pour un voyage
+@Entity // pour faire persister la classe
+@Table(name = "datesDepart")
+@JsonIgnoreProperties("voyage") // permet d'éviter les conflits entre datedepart
+// et voyage
 public class DateDepart implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 
+	// Attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_d;
 
 	private String dateDepart;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "fk_v", referencedColumnName = "id_v")
 	private Voyage voyage;
 
+	// Constructeurs : un vide puis complet et sans id
 	public DateDepart() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public DateDepart(int id_d, String dateDepart) {
@@ -49,11 +52,13 @@ public class DateDepart implements Serializable {
 		this.dateDepart = dateDepart;
 	}
 
+	// méthode toString() pour l'affichage
 	@Override
 	public String toString() {
 		return "DateDepart [id_d=" + id_d + ", " + (dateDepart != null ? "dateDepart=" + dateDepart : "") + "]";
 	}
 
+	// getters setters des attributs
 	public int getId_d() {
 		return id_d;
 	}
@@ -77,5 +82,5 @@ public class DateDepart implements Serializable {
 	public void setVoyage(Voyage voyage) {
 		this.voyage = voyage;
 	}
-	
+
 }

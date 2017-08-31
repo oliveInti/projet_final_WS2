@@ -8,14 +8,15 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fr.adaming.model.Client;
 import fr.adaming.model.DateDepart;
 import fr.adaming.model.Voyage;
 
-@Repository
+// Classe implémentant les méthodes DAO de Voyage
+@Repository // permet d'identifier un bean de type DAO
 public class VoyageDAOImpl implements IVoyageDAO {
 
-	@Autowired
+	@Autowired // injection de dépendance, permet de spécifier une variable
+				// d'instance à renseigner par Spring
 	private SessionFactory sf;
 
 	@Override
@@ -70,6 +71,7 @@ public class VoyageDAOImpl implements IVoyageDAO {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Voyage> recupererParNom(String nom) {
 		Session s = sf.getCurrentSession();

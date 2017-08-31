@@ -9,11 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.adaming.dao.IClientDAO;
 import fr.adaming.model.Client;
 
-@Service
-@Transactional
+//Classe implémentant les méthodes Service de Client
+@Service // permet d'identifier le bean comme un service
+@Transactional // sert à préciser à Spring quelles méthodes doivent s’exécuter
+				// dans une transaction
 public class ClientServiceImpl implements IClientService {
 
-	@Autowired
+	@Autowired // injection de dépendance, permet de spécifier une variable
+	// d'instance à renseigner par Spring
 	private IClientDAO clientDAO;
 
 	@Override

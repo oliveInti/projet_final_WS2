@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.adaming.model.Voyage;
 
+//interface VoyageService, décrivant les méthodes qui seront implémentées dans les classes Service
 public interface IVoyageService {
 
 	public List<Voyage> recupererTout();

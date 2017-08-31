@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.adaming.model.Client;
 
+//interface ClientService, décrivant les méthodes qui seront implémentées dans les classes Service
 public interface IClientService {
 
 	public List<Client> recupererTout();
@@ -15,8 +16,8 @@ public interface IClientService {
 	public void supprimer(int id);
 
 	public Client modifier(Client c);
-	
+
 	public boolean isAdmin(Client client);
-	
+
 	public List<Client> recupererParNom(String nom);
 }

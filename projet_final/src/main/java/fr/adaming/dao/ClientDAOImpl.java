@@ -10,10 +10,12 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Client;
 
-@Repository
+//Classe implémentant les méthodes DAO de Client
+@Repository// permet d'identifier un bean de type DAO
 public class ClientDAOImpl implements IClientDAO {
 
-	@Autowired
+	@Autowired// injection de dépendance, permet de spécifier une variable
+	// d'instance à renseigner par Spring
 	private SessionFactory sf;
 
 	@Override
@@ -79,6 +81,7 @@ public class ClientDAOImpl implements IClientDAO {
 		String req = "FROM Client as c WHERE c.nom like :name";
 		Query query = s.createQuery(req);
 		query.setParameter("name", nom);
+		@SuppressWarnings("unchecked")
 		List<Client> listeClients = query.list();
 		return listeClients;
 	}

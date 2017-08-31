@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Commande;
-import fr.adaming.model.Voyage;
 
-@Repository
+// Classe implémentant les méthodes DAO de Commande
+@Repository // permet d'identifier un bean de type DAO
 public class CommandeDAOImpl implements ICommandeDAO {
 
-	@Autowired
+	@Autowired // injection de dépendance, permet de spécifier une variable
+	// d'instance à renseigner par Spring
 	private SessionFactory sf;
 
 	@Override
@@ -44,9 +45,9 @@ public class CommandeDAOImpl implements ICommandeDAO {
 	public Commande creer(Commande co) {
 		Session s = sf.getCurrentSession();
 
-		System.out.println("AVANT : " + co);		
+		System.out.println("AVANT : " + co);
 		co.setPrixTotal(calculerPrix(co));
-		
+
 		s.save(co);
 
 		return co;
@@ -66,20 +67,15 @@ public class CommandeDAOImpl implements ICommandeDAO {
 		return null;
 	}
 
-	@Override
+	@Override // calcul du prix total : prix enfant = (prix adulte)*0.7
+	// réductions = pour un groupe de 10 à 30 personnes : 10% de réduction
+	// pour un groupe de plus de 30 personnes : 20% de réduction
 	public int calculerPrix(Commande commande) {
 
-		System.out.println("prix voyage 1 : " + commande.getVoyage().getPrix());
-		
 		int voyageurs = commande.getNbAdulte() + commande.getNbEnfant();
 
 		float prixTotal = (commande.getVoyage().getPrix() * (commande.getNbAdulte() + (commande.getNbEnfant() * 0.7f)));
 
-		System.out.println("nb adultes : " + commande.getNbAdulte());
-		System.out.println("nb enfants : " + commande.getNbEnfant());
-		
-		System.out.println("prix total 1 : " + prixTotal);
-		
 		if (voyageurs > 10) {
 			if (voyageurs > 30) {
 				prixTotal = prixTotal * 0.8f;
@@ -88,9 +84,7 @@ public class CommandeDAOImpl implements ICommandeDAO {
 			}
 		}
 
-		System.out.println("prix total 2 : " + prixTotal);
-		
-		return (int)prixTotal;
+		return (int) prixTotal;
 	}
 
 	@Override
@@ -98,7 +92,5 @@ public class CommandeDAOImpl implements ICommandeDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 }

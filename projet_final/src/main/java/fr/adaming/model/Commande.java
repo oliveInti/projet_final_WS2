@@ -10,11 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@Entity
+//Classe commande, décrit les différentes commandes des clients en fonction du voyage choisi
+@Entity // pour faire persister la classe
 @Table(name = "commandes")
-//@JsonIgnoreProperties("client")
+// @JsonIgnoreProperties("client")
 public class Commande implements Serializable {
 
 	/**
@@ -22,6 +21,7 @@ public class Commande implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	// Attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -36,9 +36,10 @@ public class Commande implements Serializable {
 	private int nbEnfant;
 	private int prixTotal;
 
+	// Constructeurs : un vide puis complet, sans id et sans id sans classes
 	public Commande() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Commande(int id, Client client, Voyage voyage, String agence, int nbAdulte, int nbEnfant, int prixTotal) {
@@ -71,6 +72,7 @@ public class Commande implements Serializable {
 		this.nbEnfant = nbEnfant;
 	}
 
+	// méthode toString() pour l'affichage
 	@Override
 	public String toString() {
 		return "Commande [id=" + id + ", " + (client != null ? "client=" + client + ", " : "")
@@ -78,6 +80,7 @@ public class Commande implements Serializable {
 				+ "nbAdulte=" + nbAdulte + ", nbEnfant=" + nbEnfant + ", prixTotal=" + prixTotal + "]";
 	}
 
+	// getters setters des attributs
 	public int getId() {
 		return id;
 	}
