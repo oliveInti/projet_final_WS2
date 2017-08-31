@@ -13,29 +13,29 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="commandes")
-@JsonIgnoreProperties("client")
-public class Commande implements Serializable{
+@Table(name = "commandes")
+//@JsonIgnoreProperties("client")
+public class Commande implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@OneToOne
-	@JoinColumn(name="fk_c", referencedColumnName="id_c")
+	@JoinColumn(name = "fk_c", referencedColumnName = "id_c")
 	private Client client;
 	@OneToOne
-	@JoinColumn(name="fk_v", referencedColumnName="id_v")
+	@JoinColumn(name = "fk_v", referencedColumnName = "id_v")
 	private Voyage voyage;
 	private String agence;
 	private int nbAdulte;
 	private int nbEnfant;
 	private int prixTotal;
-	
+
 	public Commande() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -60,6 +60,15 @@ public class Commande implements Serializable{
 		this.nbAdulte = nbAdulte;
 		this.nbEnfant = nbEnfant;
 		this.prixTotal = prixTotal;
+	}
+
+	public Commande(Client client, Voyage voyage, String agence, int nbAdulte, int nbEnfant) {
+		super();
+		this.client = client;
+		this.voyage = voyage;
+		this.agence = agence;
+		this.nbAdulte = nbAdulte;
+		this.nbEnfant = nbEnfant;
 	}
 
 	@Override
@@ -124,5 +133,5 @@ public class Commande implements Serializable{
 	public void setPrixTotal(int prixTotal) {
 		this.prixTotal = prixTotal;
 	}
-	
+
 }

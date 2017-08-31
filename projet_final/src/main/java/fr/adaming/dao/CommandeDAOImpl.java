@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Commande;
+import fr.adaming.model.Voyage;
 
 @Repository
 public class CommandeDAOImpl implements ICommandeDAO {
@@ -42,7 +43,12 @@ public class CommandeDAOImpl implements ICommandeDAO {
 	@Override
 	public Commande creer(Commande co) {
 		Session s = sf.getCurrentSession();
+
+		System.out.println("AVANT : " + co);		
+		co.setPrixTotal(calculerPrix(co));
+		
 		s.save(co);
+
 		return co;
 	}
 
@@ -58,6 +64,33 @@ public class CommandeDAOImpl implements ICommandeDAO {
 	public Commande modifier(Commande t) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int calculerPrix(Commande commande) {
+
+		System.out.println("prix voyage 1 : " + commande.getVoyage().getPrix());
+		
+		int voyageurs = commande.getNbAdulte() + commande.getNbEnfant();
+
+		float prixTotal = (commande.getVoyage().getPrix() * (commande.getNbAdulte() + (commande.getNbEnfant() * 0.7f)));
+
+		System.out.println("nb adultes : " + commande.getNbAdulte());
+		System.out.println("nb enfants : " + commande.getNbEnfant());
+		
+		System.out.println("prix total 1 : " + prixTotal);
+		
+		if (voyageurs > 10) {
+			if (voyageurs > 30) {
+				prixTotal = prixTotal * 0.8f;
+			} else {
+				prixTotal = prixTotal * 0.9f;
+			}
+		}
+
+		System.out.println("prix total 2 : " + prixTotal);
+		
+		return (int)prixTotal;
 	}
 
 }

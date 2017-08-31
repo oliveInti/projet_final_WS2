@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.ICommandeDAO;
+import fr.adaming.dao.IVoyageDAO;
 import fr.adaming.model.Commande;
 
 @Service
@@ -15,6 +16,9 @@ public class CommandeServiceImpl implements ICommandeService {
 
 	@Autowired
 	private ICommandeDAO commandeDAO;
+	
+	@Autowired
+	private IVoyageDAO voyageDAO;
 
 	@Override
 	public List<Commande> recupererTout() {
@@ -29,6 +33,9 @@ public class CommandeServiceImpl implements ICommandeService {
 
 	@Override
 	public Commande creer(Commande c) {
+		
+		c.setVoyage(voyageDAO.recupererParId(c.getVoyage().getId_v()));
+		
 		return commandeDAO.creer(c);
 
 	}
