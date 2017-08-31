@@ -15,7 +15,7 @@ public class ClientServiceImpl implements IClientService {
 
 	@Autowired
 	private IClientDAO clientDAO;
-	
+
 	@Override
 	public List<Client> recupererTout() {
 		return clientDAO.recupererTout();
@@ -34,27 +34,25 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public void supprimer(int id) {
-//		clientDAO.supprimer(id);
+		clientDAO.supprimer(id);
 
 	}
 
 	@Override
 	public Client modifier(Client c) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return clientDAO.modifier(c);
 	}
 
 	@Override
 	public boolean isAdmin(Client client) {
 		return clientDAO.isAdmin(client);
-		 
+
 	}
 
 	@Override
 	public List<Client> recupererParNom(String nom) {
 		return clientDAO.recupererParNom(nom);
 	}
-
-
 
 }
