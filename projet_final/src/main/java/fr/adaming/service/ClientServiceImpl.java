@@ -34,7 +34,7 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public void supprimer(int id) {
-		// TODO Auto-generated method stub
+		clientDAO.supprimer(id);
 
 	}
 
