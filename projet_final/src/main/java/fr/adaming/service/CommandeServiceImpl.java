@@ -12,10 +12,10 @@ import fr.adaming.model.Commande;
 @Service
 @Transactional
 public class CommandeServiceImpl implements ICommandeService {
-	
+
 	@Autowired
 	private ICommandeDAO commandeDAO;
-	
+
 	@Override
 	public List<Commande> recupererTout() {
 		return commandeDAO.recupererTout();
@@ -23,8 +23,8 @@ public class CommandeServiceImpl implements ICommandeService {
 
 	@Override
 	public Commande recupererParId(int i) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return commandeDAO.recupererParId(i);
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class CommandeServiceImpl implements ICommandeService {
 
 	@Override
 	public void supprimer(int id) {
-		// TODO Auto-generated method stub
+		commandeDAO.supprimer(id);
 
 	}
 

@@ -34,19 +34,23 @@ public class CommandeDAOImpl implements ICommandeDAO {
 
 	@Override
 	public Commande recupererParId(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		Commande varCommande = (Commande) s.get(Commande.class, i);
+		return varCommande;
 	}
 
 	@Override
-	public Commande creer(Commande t) {
-		// TODO Auto-generated method stub
-		return null;
+	public Commande creer(Commande co) {
+		Session s = sf.getCurrentSession();
+		s.save(co);
+		return co;
 	}
 
 	@Override
 	public void supprimer(int id) {
-		// TODO Auto-generated method stub
+		Session s = sf.getCurrentSession();
+		Commande commande = (Commande) s.get(Commande.class, id);
+		s.delete(commande);
 
 	}
 
