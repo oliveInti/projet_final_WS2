@@ -67,8 +67,9 @@ public class VoyageDAOImpl implements IVoyageDAO {
 
 	@Override
 	public Voyage modifier(Voyage t) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		s.saveOrUpdate(t);
+		return t;
 	}
 
 	@SuppressWarnings("unchecked")

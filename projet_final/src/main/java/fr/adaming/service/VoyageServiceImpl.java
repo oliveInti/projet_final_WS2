@@ -42,8 +42,8 @@ public class VoyageServiceImpl implements IVoyageService {
 
 	@Override
 	public Voyage modifier(Voyage v) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return voyageDAO.modifier(v);
 	}
 
 	@Override

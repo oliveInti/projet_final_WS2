@@ -45,7 +45,6 @@ public class CommandeDAOImpl implements ICommandeDAO {
 	public Commande creer(Commande co) {
 		Session s = sf.getCurrentSession();
 
-		System.out.println("AVANT : " + co);
 		co.setPrixTotal(calculerPrix(co));
 
 		s.save(co);
@@ -63,8 +62,9 @@ public class CommandeDAOImpl implements ICommandeDAO {
 
 	@Override
 	public Commande modifier(Commande t) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		s.saveOrUpdate(t);
+		return t;
 	}
 
 	@Override // calcul du prix total : prix enfant = (prix adulte)*0.7

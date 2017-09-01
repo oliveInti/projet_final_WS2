@@ -50,8 +50,8 @@ public class CommandeServiceImpl implements ICommandeService {
 
 	@Override
 	public Commande modifier(Commande c) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return commandeDAO.modifier(c);
 	}
 
 }

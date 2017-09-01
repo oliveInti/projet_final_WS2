@@ -31,14 +31,16 @@ public class DateDepartDaoImpl implements IDateDepartDao {
 
 	@Override
 	public DateDepart creer(DateDepart t) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s = sf.getCurrentSession();
+		s.save(t);
+		return t;
 	}
 
 	@Override
-	public void supprimer(int i) {
-		// TODO Auto-generated method stub
-
+	public void supprimer(int id) {
+		Session s = sf.getCurrentSession();
+		DateDepart dateDepart = (DateDepart) s.get(DateDepart.class, id);
+		s.delete(dateDepart);
 	}
 
 	@Override
