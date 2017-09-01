@@ -8,4 +8,7 @@ public interface IClientDAO extends IGeneriqueDAO<Client> {
 	// méthode permettant de déterminer si un client est Administrateur du site
 	// ou non : un admin peut créer et supprimer des voyages
 	public boolean isAdmin(Client client);
+
+	// méthode pour l'authentification
+	public Client login(String mail, String mdp);
 }

@@ -58,4 +58,10 @@ public class ClientServiceImpl implements IClientService {
 		return clientDAO.recupererParNom(nom);
 	}
 
+	@Override
+	public Client login(String mail, String mdp) {
+		
+		return clientDAO.login(mail, mdp);
+	}
+
 }

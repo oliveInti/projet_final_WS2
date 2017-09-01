@@ -20,4 +20,6 @@ public interface IClientService {
 	public boolean isAdmin(Client client);
 
 	public List<Client> recupererParNom(String nom);
+	
+	public Client login(String mail, String mdp);
 }

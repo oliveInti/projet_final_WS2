@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 import fr.adaming.model.Client;
 
 //Classe implémentant les méthodes DAO de Client
-@Repository// permet d'identifier un bean de type DAO
+@Repository // permet d'identifier un bean de type DAO
 public class ClientDAOImpl implements IClientDAO {
 
-	@Autowired// injection de dépendance, permet de spécifier une variable
+	@Autowired // injection de dépendance, permet de spécifier une variable
 	// d'instance à renseigner par Spring
 	private SessionFactory sf;
 
@@ -49,9 +49,9 @@ public class ClientDAOImpl implements IClientDAO {
 
 	@Override
 	public void supprimer(int id) {
-		 Session s = sf.getCurrentSession();
-		 Client client = (Client) s.get(Client.class, id);
-		 s.delete(client);
+		Session s = sf.getCurrentSession();
+		Client client = (Client) s.get(Client.class, id);
+		s.delete(client);
 	}
 
 	@Override
@@ -84,6 +84,29 @@ public class ClientDAOImpl implements IClientDAO {
 		@SuppressWarnings("unchecked")
 		List<Client> listeClients = query.list();
 		return listeClients;
+	}
+
+	@Override
+	public Client login(String mail, String mdp) {
+		Session s = sf.getCurrentSession();
+
+		String req = "FROM Client as c WHERE mail=? AND mdp=?";
+		Query query = s.createQuery(req);
+
+		query.setParameter(1, mail);
+		query.setParameter(2, mdp);
+
+		@SuppressWarnings("unchecked")
+		List<Client> listeClients = query.list();
+
+		int verrif = listeClients.size();
+
+		if (verrif == 1) {
+			return (Client) listeClients;
+		} else {
+
+			return null;
+		}
 	}
 
 }

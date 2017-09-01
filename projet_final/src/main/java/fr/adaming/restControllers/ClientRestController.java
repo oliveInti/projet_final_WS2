@@ -65,4 +65,13 @@ public class ClientRestController {
 	public List<Client> recupererParNom(@PathVariable("pNom") String nom) {
 		return clientService.recupererParNom(nom);
 	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
+	public void authentification(@RequestBody Client c) {
+		String mail = c.getMail();
+		String mdp = c.getMdp();
+
+		clientService.login(mail, mdp);
+	}
 }
