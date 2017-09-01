@@ -14,7 +14,7 @@ import fr.adaming.model.Client;
 import fr.adaming.service.IClientService;
 
 /**
- * Définition des méthodes du web service avec Spring MVC
+ * Définition des méthodes du web service CLient avec Spring MVC
  * 
  * @author projet blue
  *
@@ -68,10 +68,10 @@ public class ClientRestController {
 
 	@CrossOrigin
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
-	public void authentification(@RequestBody Client c) {
+	public Client authentification(@RequestBody Client c) {
 		String mail = c.getMail();
 		String mdp = c.getMdp();
 
-		clientService.login(mail, mdp);
+		return clientService.login(mail, mdp);
 	}
 }

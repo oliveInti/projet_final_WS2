@@ -93,16 +93,13 @@ public class ClientDAOImpl implements IClientDAO {
 		String req = "FROM Client as c WHERE mail=? AND mdp=?";
 		Query query = s.createQuery(req);
 
-		query.setParameter(1, mail);
-		query.setParameter(2, mdp);
+		query.setParameter(0, mail);
+		query.setParameter(1, mdp);
 
-		@SuppressWarnings("unchecked")
-		List<Client> listeClients = query.list();
+		Client client = (Client) query.uniqueResult();
 
-		int verrif = listeClients.size();
-
-		if (verrif == 1) {
-			return (Client) listeClients;
+		if (client != null ) {
+			return client;
 		} else {
 
 			return null;

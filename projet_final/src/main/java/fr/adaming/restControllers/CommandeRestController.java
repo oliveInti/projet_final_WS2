@@ -14,7 +14,7 @@ import fr.adaming.model.Commande;
 import fr.adaming.service.ICommandeService;
 
 /**
- * Définition des méthodes du web service Voyage avec Spring MVC
+ * Définition des méthodes du web service Commande avec Spring MVC
  * 
  * @author projet blue
  *

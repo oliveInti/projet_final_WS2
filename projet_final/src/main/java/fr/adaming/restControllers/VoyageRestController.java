@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.adaming.model.Client;
 import fr.adaming.model.Voyage;
 import fr.adaming.service.IVoyageService;
 
@@ -20,18 +19,18 @@ import fr.adaming.service.IVoyageService;
  * @author projet blue
  *
  */
-@RestController
-@RequestMapping("/voyages")
+@RestController // défini la classe comme un controller
+@RequestMapping("/voyages") // controller mappé comme étant "/voyages" pour l'url
 public class VoyageRestController {
 
-	@Autowired
+	@Autowired // injection de dépendance + setter
 	private IVoyageService voyageService;
 
 	public void setVoyageService(IVoyageService voyageService) {
 		this.voyageService = voyageService;
 	}
 
-	@CrossOrigin
+	@CrossOrigin// annotation pour faire le lien entre service et angular
 	@RequestMapping(value = "/listeVoyage", method = RequestMethod.GET, produces = "application/json")
 	public List<Voyage> recupererTout() {
 		return voyageService.recupererTout();
